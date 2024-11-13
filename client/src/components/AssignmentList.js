@@ -170,7 +170,7 @@ const AssignmentList = () => {
   const fetchAssignments = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/assignments/course/${courseId}`);
+      const response = await axios.get(`https://bliss-assignment.onrender.com/api/assignments/course/${courseId}`);
       setAssignments(response.data);
     } catch (error) {
       toast.error('Error fetching assignments');
@@ -187,7 +187,7 @@ const AssignmentList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/assignments', {
+      const response = await axios.post('https://bliss-assignment.onrender.com/api/assignments', {
         ...formData,
         course_id: courseId
       });
@@ -201,7 +201,7 @@ const AssignmentList = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/assignments/${id}`, {
+      const response = await axios.put(`https://bliss-assignment.onrender.com/api/assignments/${id}`, {
         status: newStatus
       });
       const updatedAssignments = assignments.map(assignment =>
@@ -217,7 +217,7 @@ const AssignmentList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this assignment?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/assignments/${id}`);
+        await axios.delete(`https://bliss-assignment.onrender.com/api/assignments/${id}`);
         const updatedAssignments = assignments.filter(assignment => assignment._id !== id);
         setAssignments(updatedAssignments);
         toast.success('Assignment deleted successfully');

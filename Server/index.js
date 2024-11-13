@@ -7,6 +7,11 @@ const app = express();
 
 // Middleware
 app.use(cors());
+app.use(
+  cors({
+    origin: "https://bliss-assignment.vercel.app",
+  })
+);
 app.use(express.json());
 
 // MongoDB connection with proper error handling

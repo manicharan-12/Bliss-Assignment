@@ -152,7 +152,7 @@ const CourseList = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/courses');
+      const response = await axios.get('https://bliss-assignment.onrender.com/api/courses');
       setCourses(response.data);
     } catch (error) {
       toast.error('Error fetching courses');
@@ -169,7 +169,7 @@ const CourseList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/courses', formData);
+      await axios.post('https://bliss-assignment.onrender.com/api/courses', formData);
       setShowModal(false);
       fetchCourses();
       toast.success('Course added successfully');
@@ -181,7 +181,7 @@ const CourseList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this course?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/courses/${id}`);
+        await axios.delete(`https://bliss-assignment.onrender.com/api/courses/${id}`);
         fetchCourses();
         toast.success('Course deleted successfully');
       } catch (error) {
